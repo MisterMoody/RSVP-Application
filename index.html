@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>RSVP App</title>
+  <link href="https://fonts.googleapis.com/css?family=Courgette" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+  <main>
+    
+    <h1>Building an RSVP Application</h1>
+    <p>This project uses JavaScript to build an application that will allow users to register for an event. Individuals that receive the RSVP will be able to notify event planners if they will attend the event or not. Once registered, registrant will be able to confirm their attendance or remove their name from the list.
+      <br>The actual application can be found <a href="rsvp.html">here</a>.</p>
+    <!-- --> 
+    <!-- -->
+    <h3>Part I: Registration</h3>
+    <p>Learn more about the <a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLFormElement/submit_event" target="_blank">submit</a> Event Handler.</p>
+    <p>Learn more about the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Event/preventDefault" target="_blank">preventDefault()</a> Event Handler.</p>
+    <!-- --> 
+    <!-- -->
+    <hr>
+    <!-- -->
+    <!-- -->
+    <h3>Part II: Edit and Filter</h3>
+    <p>Once registered, users can modify their names and use a filter to see confirmed guests.</p>
+    <p>The <b>e.target</b> is used to <em>reference/select a specific element</em>. Whenever an Event Handler does something relative to a 'clicked element' the e.target provides a starting point to perform DOM traversal by setting that element to a particular state.</p>
+    <p>Need to manipulate the <em>#text Element</em> by converting it into an <em>html Element</em>.</p>
+    <!-- --> 
+    <!-- -->
+    <hr>
+    <!-- -->
+    <!-- -->
+    <h3>Part III: Advance</h3>
+    <p>The <b>DOMContentLoaded</b> Event fires when the initial HTML document has been completely loaded and parsed, without waiting for stylesheets, images, and subframes to finish loading. It can be used to allow developers to place the <code>&#60;script&#62;</code> tag at the top of an <code>&#60;html&#62;</code> document to ensure that the code has an immediate impact on the user interface. This handler then encapsulates the entire code like so:
+    <br><code>document.addEventListener('DOMContentLoaded', () => { ... });</code></p>
+    <p><b>Refactoring</b> is a process that naturally follows the initial coding stage, where you go back through your program and make what you wrote more concise and readable.</p>
+    <p>Learn more about the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Document/DOMContentLoaded_event" target="_blank">DOMContentLoaded</a> Event.</p>
+    <p>Bracket Syntax dynamically accessess the property of Element using the string contained within the property itself.</p>
+    
+    <hr>
+    <hr>
+    <!-- -->
+    <!-- -->    
+    <h4><mark>Adding a JavaScript File</mark></h4>
+    <p>Create a JavaScript File with a Specific Name: script.js</p>
+    <p>Add a <code>&#60;script&#62;</code> tag at the bottom of the <code>&#60;html&#62;</code> file where the script will be used, just above the closing <code> &#60;body&#62;</code> tag.</p>
+    <p>Open the browser dev tools and utilize console to <em>TEST</em> if the files are properly linked, input the following code into the console: <b>console.log('Hello World');</b></p>
+    
+    <h4>Other Resources:</h4>
+    <ul>
+      <li><a href="https://teamtreehouse.com/library/using-local-storage-with-javascript">Local Storage Worksho p to 'Store User Data'</a></li>
+      <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model/Whitespace_in_the_DOM">Text Nodes</a></li>
+      <li><a href="http://stackoverflow.com/a/17196184">Text Nodes II</a></li>
+      <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Text">Text Nodes III</a></li>
+    </ul>
+  </main>
+</body>
+</html>

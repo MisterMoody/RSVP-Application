@@ -11,50 +11,62 @@
   <main>
     
     <h1>Building an RSVP Application</h1>
-    <p>This project uses JavaScript to build an application that will allow users to register for an event. Individuals that receive the RSVP will be able to notify event planners if they will attend the event or not. Once registered, registrant will be able to confirm their attendance or remove their name from the list.
-      <br>The actual application can be found <a href="rsvp.html">here</a>.</p>
-    <!-- --> 
-    <!-- -->
-    <h3>Part I: Registration</h3>
-    <p>Learn more about the <a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLFormElement/submit_event" target="_blank">submit</a> Event Handler.</p>
-    <p>Learn more about the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Event/preventDefault" target="_blank">preventDefault()</a> Event Handler.</p>
-    <!-- --> 
-    <!-- -->
-    <hr>
-    <!-- -->
-    <!-- -->
-    <h3>Part II: Edit and Filter</h3>
-    <p>Once registered, users can modify their names and use a filter to see confirmed guests.</p>
-    <p>The <b>e.target</b> is used to <em>reference/select a specific element</em>. Whenever an Event Handler does something relative to a 'clicked element' the e.target provides a starting point to perform DOM traversal by setting that element to a particular state.</p>
-    <p>Need to manipulate the <em>#text Element</em> by converting it into an <em>html Element</em>.</p>
-    <!-- --> 
-    <!-- -->
-    <hr>
-    <!-- -->
-    <!-- -->
-    <h3>Part III: Advance</h3>
-    <p>The <b>DOMContentLoaded</b> Event fires when the initial HTML document has been completely loaded and parsed, without waiting for stylesheets, images, and subframes to finish loading. It can be used to allow developers to place the <code>&#60;script&#62;</code> tag at the top of an <code>&#60;html&#62;</code> document to ensure that the code has an immediate impact on the user interface. This handler then encapsulates the entire code like so:
-    <br><code>document.addEventListener('DOMContentLoaded', () => { ... });</code></p>
-    <p><b>Refactoring</b> is a process that naturally follows the initial coding stage, where you go back through your program and make what you wrote more concise and readable.</p>
-    <p>Learn more about the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Document/DOMContentLoaded_event" target="_blank">DOMContentLoaded</a> Event.</p>
-    <p>Bracket Syntax dynamically accessess the property of Element using the string contained within the property itself.</p>
+    <p>This project uses DOM Scripting to build an application that will allow invited users to register for and notify event planners if they will attend the event. Once registered, registrant will be able to confirm their attendance or remove their name from the list. The application can be found <a href="rsvp.html">here</a>.</p>
     
-    <hr>
-    <hr>
+    <!-- --> 
+    <h3>PART I: Registration</h3>
     <!-- -->
-    <!-- -->    
-    <h4><mark>Adding a JavaScript File</mark></h4>
-    <p>Create a JavaScript File with a Specific Name: script.js</p>
-    <p>Add a <code>&#60;script&#62;</code> tag at the bottom of the <code>&#60;html&#62;</code> file where the script will be used, just above the closing <code> &#60;body&#62;</code> tag.</p>
-    <p>Open the browser dev tools and utilize console to <em>TEST</em> if the files are properly linked, input the following code into the console: <b>console.log('Hello World');</b></p>
+    <h4>[a] Registering Names</h4>
+    <p>The first step to building this app begins with <em>capturing <code>&#60;form&#62;</code> input then printing the data upon submission</em>. To do this, select the <code>&#60;form&#62;</code> by its <code>&#35;id</code> to access the <code>&#60;input&#62;</code> child-element then set the handler on the <code>&#60;form&#62;</code> itself using the <code><a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLFormElement/submit_event" target="_blank">submit</a></code> event handler to <em>capture the submission</em> when the user <code>clicks</code> the button or the enter key. The  <a href="https://developer.mozilla.org/en-US/docs/Web/API/Event/preventDefault" target="_blank">preventDefault()</a> event handler is used to <em>prevent browser refresh</em>.</p>
+    <img src="images/registerNames.png">
     
-    <h4>Other Resources:</h4>
-    <ul>
-      <li><a href="https://teamtreehouse.com/library/using-local-storage-with-javascript">Local Storage Worksho p to 'Store User Data'</a></li>
-      <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model/Whitespace_in_the_DOM">Text Nodes</a></li>
-      <li><a href="http://stackoverflow.com/a/17196184">Text Nodes II</a></li>
-      <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Text">Text Nodes III</a></li>
-    </ul>
+    <h4>[b] Adding a Checkbox</h4>
+    <p>The second step in building this app is to <em>create a checkbox confirming user registration</em>. This is done by creating <code>&#60;li&#62;</code> that contains a checkbox along with a <code>&#60;label&#62;</code>. Next, create an <code>&#60;input&#62;</code> element and store it in a variable, then set the <code>&#60;input&#62;</code> type to the variable. Once the  <code>&#60;input&#62;</code> is configured, append it to the <code>&#60;label&#62;</code> using <code>.appendChild()</code> whereas the <em>variable is its argument</em>: append the <code>&#60;li&#62;</code> to the <code>&#60;label&#62;</code> as well. </p>
+    <img src="images/addCheckbox.png">
+    <p>Due to scoping concerns, <mark>the <code>&#60;ul&#62;</code> variable should be placed with other global variables</mark>. After creating the checkbox, add an <code>event handler</code> to highlight whether or not a user is registered. This goal is easily achieved by adding a handler to a single element to enhance performance via <code>event bubbling</code>. In this case, the <code><a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event">change</a></code> event handler is used to <em>ascertain when the <code>checkbox</code> state has 'changed'</em> from un-checked to checked, or vice-versa. The handler first references the checkbox, stores the value then uses <code>.parentNode()</code> to traverse to the <code>&#60;label&#62;</code> and again to traverse to the <code>&#60;li&#62;</code>. Finally, set the <code>&#60;li&#62;</code> class name to <code>responded</code> if checked is true or remove the class if false: this is accomplished using an <code>if(){}...else(){}</code> conditional statement.</p>
+    <img src="images/addCheckbox2.png">
+    
+    <h4>[c] Removing Names</h4>
+    <p>In order to give users the ability to remove themselves from the list, create a <code>&#60;button&#62;</code> indicating that the user can <em>remove their name from the list</em>. The code is similar to that of the <code>checkbox</code> that was created previously with the exception that the <code>&#60;li&#62;</code> are appended to <em>buttons</em> instead of <em>checkboxes</em>.</p>
+    <img src="images/removeUser.png">
+    <p>After creating the button, set an event handler on <code>&#60;ul&#62;</code> to handle <code>'click'</code> events. </p>
+    <img src="images/removeUser2.png">
+    <p>Then, re-create the <code>submit</code> Function to handle any 'clicks' by <em>creating a list-item element</em> that returns the <code>&#60;li&#62;</code>.</p>
+    <img src="images/removeUser3a.png">
+    <p></p>
+    <img src="images/removeUser3b.png">
+    
+    <!-- -->
+    <hr>
+    <!-- --> 
+    
+    <!-- -->
+    <h3>Part II: Edit + Save + Filter</h3>
+    <!-- -->
+    
+    <h4>[d] Editing Names</h4>
+    <p>People make mistakes: safely assume a user will misspell their name, idk~ in such a case, <em>it would be useful for users to be able to both edit and save their names</em>. This is achieved by providing users with two views: one to view and edit and another to save after edits. Thus, clicking 'edit' will convert the <code>text</code> element to an <code>input</code> element allowing user edits. Subsequently, a 'save' button will appear when the 'edit' view changes allowing users to save edits. Again, this is done by modifying the <code>submit</code> funtion.</p>
+    <img src="images/editUser.png">
+    <p>Complete this task by modifying the <code>&#60;ul&#62;</code> 'click' event handler by creating a <code>&#60;span&#62;</code>variable and an <code>&#60;input&#62;</code> variable to replace the <code>&#60;span&#62;</code> with. Use the <code>&#60;span&#62;</code> to place the new <code>&#60;input&#62;</code> elements into the DOM using <code>insertBefore()</code> while <em>calling <code>.removeChild()</code> on the &#60;span&#62; to remove it</em>. </p>
+    <img src="images/editUser2.png">
+    
+    <h4>[e] Saving Names</h4>
+    <p>In order to convert the 'edit' button with a 'save' button, <em>copy and paste the 'edit' <code>} else if{ </code> branch</em> below itself, then modify. Basically, the <code>edit</code> and <code>save</code> arguments as well as the <code>span.textContent</code> and <code>input.value</code> are 'switched' while the same is true of the 'arguments' for <code>li.insertBefore()</code> and <code>li.removeChild()</code>.</p>
+    <img src="images/saveUser.png">
+    
+    <h4>[f] Filtering Names</h4>
+    <p>Offering a filtering mechanism for users to modify their name or look at a list of confirmed guests is a plus at this point. This can be achieved by creatinge variables that creates elements for a <code>&#60;div&#62;</code>, a <code>&#60;filterLabel&#62;</code> and a <code>&#60;filterCheckbox&#62;</code>.</p>
+    <p>Then, set the <code>.textContent</code> for users who have yet to register along with a checkbox. Now, the <code>mainDiv</code> can be inserted into the DOM using <code>.insertBefore()</code> using <code>.insertBefore()</code>, passing the <code>&#60;div&#62;</code> before the <code>&#60;ul&#62;</code> as arguments.</p>    
+    <p>Once registered, users can modify their names and use a filter to see confirmed guests. The <b>e.target</b> is used to <em>reference/select a specific element</em>. Whenever an Event Handler does something relative to a 'clicked element' the e.target provides a starting point to perform DOM traversal by setting that element to a particular state. Need to manipulate the <em>#text Element</em> by converting it into an <em>html Element</em>. The <em>value</em> of the &#60;input&#62; element is set to the <em>text content</em> of the &#60;span&#62;.</p>
+     <img src="images/filterUsers.png">
+    <p>From here, the <code>filterCheckbox</code> variable can be used to call an <code>.addEventListener</code> function using the <code>'change'</code> event handler.An <code>if(){}</code> statement is appropro at this juncture to go through the entire list of items: a <code>for() {}</code> Loop is applied to the <code>else(){}</code> clause as well. <em>Branches are used to distinguish users who have responded from those who have not</em>! Users who have responded will display whereas users who have not responded will not be displayed.</p>
+     <img src="images/filterUsers2.png">
+    <h4>[g] Advanced Method</h4>
+    <p>The <code><a href="https://developer.mozilla.org/en-US/docs/Web/API/Document/DOMContentLoaded_event" target="_blank">DOMContentLoaded</a></code> Event is a useful method to employ when <em>you want the browser to load and parse code as soon as possible</em>, without waiting for stylesheets, images, and subframes to finish loading.This allows developers to place the <code>&#60;script&#62;</code> tag at the top of an <code>&#60;html&#62;</code> document to ensure that the code has an immediate impact on the user interface. This handler encapsulates the entire code like so:</p>
+    <img src="images/domContentLoaded.png">
+    <!-- -->
+    <!-- -->   
+    <p>You can learn how to create this app by watching this <a href="https://teamtreehouse.com/library/dom-scripting-by-example">tutorial</a>.</p>
   </main>
 </body>
 </html>
